@@ -11,9 +11,13 @@
     <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
+    <div id="mouse-cursor">
+        <div></div>
+    </div>
+
     <div id="sidebar">
         <h1>SPECTRUM.</h1>
-        <div class="flow"><span>Scroll Down</span><img src="images/icon_scrollDown.svg" alt=""></div>
+        <!-- <div class="flow"><span>Scroll Down</span><img src="images/icon_scrollDown.svg" alt=""></div> -->
     </div>
 
     <div id="intro">
@@ -75,42 +79,108 @@
     </main>
 
     <script>
+        const cursor = document.getElementById("mouse-cursor")
         const t1 = gsap.timeline();
-        t1.from("#sidebar h1", {opacity: 0, duration: 1.5, delay: 0.5})
-        t1.from(".keyword .row li:nth-of-type(1)", {opacity: 0, duration: .4})
-        t1.from(".keyword .row li:nth-of-type(2)", {opacity: 0, duration: .3})
-        t1.from(".keyword .row li:nth-of-type(3)", {opacity: 0, duration: .3})
-        t1.from(".keyword .row li:nth-of-type(4)", {opacity: 0, duration: .3})
-        t1.from(".keyword .row li:nth-of-type(5)", {opacity: 0, duration: .2})
-        t1.from(".keyword .row li:nth-of-type(6)", {opacity: 0, duration: .2})
-        t1.from(".keyword .row li:nth-of-type(7)", {opacity: 0, duration: .1})
-        t1.from(".keyword .row li:nth-of-type(8)", {opacity: 0, duration: .1})
-        t1.from(".keyword .row li:nth-of-type(9)", {opacity: 0, duration: .1})
-        t1.from(".keyword .row li:nth-of-type(10)", {opacity: 0, duration: .1})
-        t1.from(".keyword .author", {opacity: 0, duration: .1}, "<")
-        t1.to(".keyword .row li:nth-of-type(1)", {opacity: 0, duration: .8, delay: 1.5})
-        t1.to(".keyword .row li:nth-of-type(2)", {opacity: 0, duration: .8}, "<")
-        t1.to(".keyword .row li:nth-of-type(3)", {opacity: 0, duration: .3}, "<")
-        t1.to(".keyword .row li:nth-of-type(4)", {opacity: 0, duration: .3}, "<")
-        t1.to(".keyword .row li:nth-of-type(5)", {opacity: 0, duration: .1}, "<")
-        t1.to(".keyword .row li:nth-of-type(6)", {opacity: 0, duration: .1}, "<")
-        t1.to(".keyword .row li:nth-of-type(7)", {opacity: 0, duration: .3}, "<")
-        t1.to(".keyword .row li:nth-of-type(8)", {opacity: 0, duration: .3}, "<")
-        t1.to(".keyword .row li:nth-of-type(9)", {opacity: 0, duration: .3}, "<")
-        t1.to(".keyword .row li:nth-of-type(10)", {opacity: 0, duration: .3}, "<")
-        t1.to(".keyword .author", {opacity: 0, duration: .8}, "<")
-        t1.to(".keyword", {opacity: 0, delay: 0.5})
+        t1.from("#sidebar h1", {opacity: 0, duration: .8, delay: 0.25})
+        t1.from(".keyword .row li:nth-of-type(1)", {opacity: 0, duration: .2})
+        t1.from(".keyword .row li:nth-of-type(2)", {opacity: 0, duration: .15})
+        t1.from(".keyword .row li:nth-of-type(3)", {opacity: 0, duration: .15})
+        t1.from(".keyword .row li:nth-of-type(4)", {opacity: 0, duration: .15})
+        t1.from(".keyword .row li:nth-of-type(5)", {opacity: 0, duration: .1})
+        t1.from(".keyword .row li:nth-of-type(6)", {opacity: 0, duration: .1})
+        t1.from(".keyword .row li:nth-of-type(7)", {opacity: 0, duration: .05})
+        t1.from(".keyword .row li:nth-of-type(8)", {opacity: 0, duration: .05})
+        t1.from(".keyword .row li:nth-of-type(9)", {opacity: 0, duration: .05})
+        t1.from(".keyword .row li:nth-of-type(10)", {opacity: 0, duration: .05})
+        t1.from(".keyword .author", {opacity: 0, duration: .05}, "<")
+        t1.to(".keyword .row li:nth-of-type(1)", {opacity: 0, duration: .4, delay: 0.8})
+        t1.to(".keyword .row li:nth-of-type(2)", {opacity: 0, duration: .4}, "<")
+        t1.to(".keyword .row li:nth-of-type(3)", {opacity: 0, duration: .15}, "<")
+        t1.to(".keyword .row li:nth-of-type(4)", {opacity: 0, duration: .15}, "<")
+        t1.to(".keyword .row li:nth-of-type(5)", {opacity: 0, duration: .05}, "<")
+        t1.to(".keyword .row li:nth-of-type(6)", {opacity: 0, duration: .04}, "<")
+        t1.to(".keyword .row li:nth-of-type(7)", {opacity: 0, duration: .15}, "<")
+        t1.to(".keyword .row li:nth-of-type(8)", {opacity: 0, duration: .15}, "<")
+        t1.to(".keyword .row li:nth-of-type(9)", {opacity: 0, duration: .15}, "<")
+        t1.to(".keyword .row li:nth-of-type(10)", {opacity: 0, duration: .15}, "<")
+        t1.to(".keyword .author", {opacity: 0, duration: .4}, "<")
+        t1.to(".keyword", {opacity: 0, delay: .25})
+        t1.to(".keyword", {display: "none"},"<")
         t1.from("#sidebar .flow", {opacity: 0}, "<")
-        t1.from(".resume .info h3", {opacity: 0, duration: .3})
-        t1.from(".resume .info_list li:nth-of-type(1) strong", {opacity: 0, duration: .3})
-        t1.from(".resume .info_list li:nth-of-type(1) div", {opacity: 0, duration: .3})
-        t1.from(".resume .info_list li:nth-of-type(2) strong", {opacity: 0, duration: .3})
-        t1.from(".resume .info_list li:nth-of-type(2) div", {opacity: 0, duration: .3})
-        t1.from(".resume .info_list li:nth-of-type(3) strong", {opacity: 0, duration: .3})
-        t1.from(".resume .info_list li:nth-of-type(3) div", {opacity: 0, duration: .3})
-        t1.from(".resume h2 span", {opacity: 0, duration: .3})
-        t1.from(".resume h2 div", {opacity: 0, duration: .3})
+        t1.from(".resume .info h3", {opacity: 0, duration: .15})
+        t1.from(".resume .info_list li:nth-of-type(1) strong", {opacity: 0, duration: .05})
+        t1.from(".resume .info_list li:nth-of-type(1) div", {opacity: 0, duration: .05})
+        t1.from(".resume .info_list li:nth-of-type(2) strong", {opacity: 0, duration: .05})
+        t1.from(".resume .info_list li:nth-of-type(2) div", {opacity: 0, duration: .05})
+        t1.from(".resume .info_list li:nth-of-type(3) strong", {opacity: 0, duration: .05})
+        t1.from(".resume .info_list li:nth-of-type(3) div", {opacity: 0, duration: .05})
+        t1.from(".resume h2 span", {opacity: 0, duration: .15})
+        t1.from(".resume h2 div", {opacity: 0, duration: .15, 
+            onComplete: function() { 
+                document.querySelector(".keyword").remove();
+                cursor.classList.add("mode_scroll")
+                cursor.children[0].setAttribute("data-name", "scroll")
+        }})
         
     </script>
+
+    <div id="mouse-cursor">
+        <div></div>
+    </div>
+
+  <script>
+    const cursorParent = document.getElementById('mouse-cursor')
+    const cursorChild = cursorParent.children[0]
+    window.addEventListener('mousemove', mousemove)
+    // window.addEventListener('mousedown', mousedown)
+    // window.addEventListener('mouseup', mouseup)
+
+    let scale = 1
+    let stage = ''
+    let cursorX = 0, cursorY = 0
+    function mousemove(e) {
+      cursorX = e.pageX - cursorParent.offsetWidth / 2
+      cursorY = e.pageY - cursorParent.offsetHeight / 2
+      cursorParent.style.transform =
+        `translate3d(${cursorX}px, ${cursorY}px, 0)`
+
+        // console.log(e.target)
+    //   switch(e.target.getAttribute('data-cursor')) {
+    //     case 'list':
+    //       if (stage === 'list') return
+    //       scale = 3
+    //       stage = 'list'
+    //       cursorChild.setAttribute('data-name', e.target.getAttribute('data-name'))
+    //       cursorParent.className = 'cursor-text-mode'
+    //       break
+    //     default:
+    //       if (stage === '') return
+    //       scale = 1
+    //       stage = ''
+    //       cursorChild.setAttribute('data-name', '')
+    //       cursorParent.className = ''
+    //       break
+    //   }
+    //   cursorChild.style.setProperty('--cursor-scale', scale)
+    }
+    // function mousedown(e) {
+    //   scale *= 0.8
+    //   cursorChild.style.setProperty('--cursor-scale', scale)
+    // }
+    // function mouseup(e) {
+    //   scale *= 1.25
+    //   cursorChild.style.setProperty('--cursor-scale', scale)
+    // }
+
+    function scrollFadeOut(){
+        if(cursor.classList.contains("mode_scroll")){
+            document.querySelector(".resume").style.opacity = 0
+            cursor.classList.remove("mode_scroll")
+            cursor.children[0].removeAttribute("data-name")
+        }
+    }
+
+    document.addEventListener("mousewheel", scrollFadeOut)
+  </script>
 </body>
 </html>
