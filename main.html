@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1200">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.6/dist/web/static/pretendard.min.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <div id="sidebar">
+        <h1>SPECTRUM.</h1>
+        <div class="flow"><span>Scroll Down</span><img src="images/icon_scrollDown.svg" alt=""></div>
+    </div>
+
+    <div id="intro">
+        <div class="keyword">
+            <div class="word">
+                 <ul class="row">
+                    <li>ANALYSIS</li>
+                    <li>POSITIONING</li>
+                    <li>INSPIRATION</li>
+                    <li>INSIGHT</li>
+                    <li>CREATIVITY</li>
+                    <li>CONVERGENCE</li>
+                    <li>STRATEGY</li>
+                    <li>NARRATIVE</li>
+                    <li>AFFORDANCE</li>
+                    <li>ENGAGEMENT</li>
+                 </ul>
+                 <ul class="row">
+                    <li>PERSONA</li>
+                    <li>JOURNEY MAP</li>
+                    <li>USER FLOW CHART</li>
+                    <li>DESIGN DRAFT</li>
+                    <li>VISUAL PERFORMANCE</li>
+                    <li>AB TEST</li>
+                    <li>DESIGN SYSTEM</li>
+                    <li>DESIGN TOKEN</li>
+                    <li>OKR</li>
+                    <li>QA</li>
+                 </ul>
+            </div>
+            <div class="author">by Lee, Dong-Hyeok</div>
+        </div>
+        <div class="resume">
+            <div class="info">
+                <h3>Product + UI/UIX Design Artworks</h3>
+                <ul class="info_list">
+                    <li>
+                        <strong>Product Designer</strong>
+                        Lee, Dong-Hyeok
+                    </li>
+                    <li>
+                        <strong>E-Mail</strong>
+                        hyuck9859@naver.com
+                    </li>
+                    <li>
+                        <strong>Mobile Contact</strong>
+                        010.2709.9859
+                    </li>
+                </ul>
+            </div>
+            <h2>
+                <span>다양한 경험과 융합적인 사고로 디자인을 풀어나가는</span>
+                SPECTRUM.
+            </h2>
+        </div>
+    </div>
+
+    <main>
+    </main>
+
+    <script>
+        const t1 = gsap.timeline();
+        t1.from("#sidebar h1", {opacity: 0, duration: 1.5, delay: 0.5})
+        t1.from(".keyword .row li:nth-of-type(1)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(2)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(3)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(4)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(5)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(6)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(7)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(8)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(9)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .row li:nth-of-type(10)", {opacity: 0, duration: 1}, "<0.5")
+        t1.from(".keyword .author", {opacity: 0, duration: 0.5}, "<0.5")
+        t1.to(".keyword", {opacity: 0, delay: 0.5})
+        t1.from("#sidebar .flow", {opacity: 0}, "<")
+
+    </script>
+</body>
+</html>
