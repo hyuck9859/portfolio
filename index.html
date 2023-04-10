@@ -52,21 +52,21 @@
                 <ul class="info_list">
                     <li>
                         <strong>Product Designer</strong>
-                        Lee, Dong-Hyeok
+                        <div>Lee, Dong-Hyeok</div>
                     </li>
                     <li>
                         <strong>E-Mail</strong>
-                        hyuck9859@naver.com
+                        <div>hyuck9859@naver.com</div>
                     </li>
                     <li>
                         <strong>Mobile Contact</strong>
-                        010.2709.9859
+                        <div>010.2709.9859</div>
                     </li>
                 </ul>
             </div>
             <h2>
                 <span>다양한 경험과 융합적인 사고로 디자인을 풀어나가는</span>
-                SPECTRUM.
+                <div>SPECTRUM.</div>
             </h2>
         </div>
     </div>
@@ -101,7 +101,16 @@
         t1.to(".keyword .author", {opacity: 0, duration: .8}, "<")
         t1.to(".keyword", {opacity: 0, delay: 0.5})
         t1.from("#sidebar .flow", {opacity: 0}, "<")
-
+        t1.from(".resume .info h3", {opacity: 0, duration: .3})
+        t1.from(".resume .info_list li:nth-of-type(1) strong", {opacity: 0, duration: .3})
+        t1.from(".resume .info_list li:nth-of-type(1) div", {opacity: 0, duration: .3})
+        t1.from(".resume .info_list li:nth-of-type(2) strong", {opacity: 0, duration: .3})
+        t1.from(".resume .info_list li:nth-of-type(2) div", {opacity: 0, duration: .3})
+        t1.from(".resume .info_list li:nth-of-type(3) strong", {opacity: 0, duration: .3})
+        t1.from(".resume .info_list li:nth-of-type(3) div", {opacity: 0, duration: .3})
+        t1.from(".resume h2 span", {opacity: 0, duration: .3})
+        t1.from(".resume h2 div", {opacity: 0, duration: .3})
+        
     </script>
 </body>
 </html>
