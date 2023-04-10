@@ -7,7 +7,7 @@ main{height:inherit;}
 #sidebar{position: fixed;top: 0;left: 0;z-index: 900;width: 65px;height: 100%;padding: 32px 0}
 @keyframes sidebarLine { 100%{height: 100%;} }
 #sidebar::after{position: absolute;top: 0;right: 0;content: '';width: 1px;height: 0;background-color: #565C63;animation: sidebarLine .5s forwards;}
-#sidebar h1{writing-mode: vertical-lr;transform: rotate(180deg);font-family: 'Gotham';line-height: 65px;letter-spacing: -0.02em;}
+#sidebar h1{writing-mode: vertical-lr;transform: rotate(180deg);font-family: gotham;font-weight: 700;line-height: 65px;letter-spacing: -0.02em;}
 /* #sidebar .flow{position: absolute;bottom: 32px;display: flex;flex-direction: column;row-gap: 8px;align-items: center;}
 #sidebar .flow span{writing-mode: vertical-lr;transform: rotate(180deg);font-family: 'Pretendard';font-weight: 300;font-size: 13px;line-height: 65px;}
 #sidebar .flow img{width: 32px;height: 32px;} */
@@ -22,6 +22,7 @@ main{height:inherit;}
 #intro .resume .info_list strong{display: block;margin-bottom: 6px;font-weight: 600;font-size: 24px;line-height: 29px;color: #E9EBEF;}
 #intro .resume h2{font-family: 'Gotham';font-weight: 700;font-size: 140px;line-height: 155px;letter-spacing: -0.02em;}
 #intro .resume h2>span{display: block;padding-left: 20px;font-weight: 300;font-size: 32px;line-height: 38px;color: #FE88FE;}
+#intro .resume h2>div{font-family: gotham;}
 
 #intro .keyword{z-index: 100;display: flex;flex-direction: column;justify-content: space-between;background-color: #121619;}
 #intro .keyword .word{display: flex;column-gap:216px;font-family: 'Gotham';font-weight: 700;font-size: 56px;line-height: 62px;color: #848C94;}
