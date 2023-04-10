@@ -2,23 +2,20 @@
 a{display: inline-block;vertical-align: top;text-decoration: none;}
 ul{list-style: none;}
 
-body{min-width: 1200px;min-height: 100vh;background-color: #121619;color: #fff;}
+body{min-width: 1200px;min-height: 100vh;background-color: #121619;color: #fff;cursor: none;}
 main{height:inherit;}
 #sidebar{position: fixed;top: 0;left: 0;z-index: 900;width: 65px;height: 100%;padding: 32px 0}
-@keyframes sidebarLine {
-    100%{height: 100%;}
-}
-#sidebar::after{position: absolute;top: 0;right: 0;content: '';width: 1px;height: 0;background-color: #565C63;animation: sidebarLine 1s forwards;}
-
+@keyframes sidebarLine { 100%{height: 100%;} }
+#sidebar::after{position: absolute;top: 0;right: 0;content: '';width: 1px;height: 0;background-color: #565C63;animation: sidebarLine .5s forwards;}
 #sidebar h1{writing-mode: vertical-lr;transform: rotate(180deg);font-family: 'Gotham';line-height: 65px;letter-spacing: -0.02em;}
-#sidebar .flow{position: absolute;bottom: 32px;display: flex;flex-direction: column;row-gap: 8px;align-items: center;}
+/* #sidebar .flow{position: absolute;bottom: 32px;display: flex;flex-direction: column;row-gap: 8px;align-items: center;}
 #sidebar .flow span{writing-mode: vertical-lr;transform: rotate(180deg);font-family: 'Pretendard';font-weight: 300;font-size: 13px;line-height: 65px;}
-#sidebar .flow img{width: 32px;height: 32px;}
+#sidebar .flow img{width: 32px;height: 32px;} */
 
 #intro{position: relative;}
 #intro>div{position: absolute;top: 0;left: 0;width: 100%;height: 100vh;padding: 80px 121px;}
 
-#intro .resume{display: flex;flex-direction: column;justify-content: space-between;background: url(../images/bg_intro.jpg) no-repeat center / cover;}
+#intro .resume{display: flex;flex-direction: column;justify-content: space-between;background: url(../images/bg_intro.jpg) no-repeat center / cover;transition: opacity .25s;}
 #intro .resume .info h3{font-weight: 600;font-size: 32px;line-height: 38px;color: #E9EBEF;}
 #intro .resume .info_list{margin-top: 48px;font-weight: 300;font-size: 20px;line-height: 24px;color: #BFC6CC;}
 #intro .resume .info_list li+li{margin-top: 32px;}
@@ -29,3 +26,67 @@ main{height:inherit;}
 #intro .keyword{z-index: 100;display: flex;flex-direction: column;justify-content: space-between;background-color: #121619;}
 #intro .keyword .word{display: flex;column-gap:216px;font-family: 'Gotham';font-weight: 700;font-size: 56px;line-height: 62px;color: #848C94;}
 #intro .keyword .author{font-family: 'Pretendard';font-weight: 300;font-size: 32px;line-height: 38px;color: #343A3F;}
+
+
+
+#mouse-cursor {
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 10000;
+    will-change: transform;
+    transform: translate3d(-100%, -100%, 0);
+    pointer-events: none;
+    mix-blend-mode: difference;
+  }
+  
+  #mouse-cursor > div {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --cursor-scale: 1;
+    transform: scale3d(var(--cursor-scale), var(--cursor-scale), 1);
+    will-change: transform;
+    transition: transform 150ms ease-in-out,
+                background-color 150ms ease-in-out,
+                width 150ms ease-in-out,
+                height 150ms ease-in-out;
+    font-weight: 300;
+    font-size: 10px;
+    color: #BFC6CC;
+  }
+  
+  #mouse-cursor > div::after {
+    content: attr(data-name);
+    position: absolute;
+    color: #BFC6CC;
+    white-space: nowrap;
+  }
+  
+#mouse-cursor.mode_scroll{
+    mix-blend-mode: unset;
+}
+#mouse-cursor.mode_scroll > div{
+    width: 48px;
+    height: 48px;
+    border: 1px solid transparent;
+    /* background-image: linear-gradient(90deg, rgba(255,162,254,0) 0%, rgba(255,254,172,0) 100%), linear-gradient(90deg, rgba(255,162,254,1) 0%, rgba(255,254,172,1) 100%); */
+    background-image: linear-gradient(#1A1A1A, #1A1A1A), 
+    linear-gradient(90deg, rgba(255,162,254,1) 0%, rgba(255,254,172,1) 100%);;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 0px 0px 8px rgba(255, 162, 254, 0.3);
+  }
+
+  /* .cursor-text-mode {
+    mix-blend-mode: initial !important;
+  }
+  
+  .cursor-text-mode > div {
+    background-color: #333 !important;
+  } */
