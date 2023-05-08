@@ -1,3 +1,4 @@
+const cursor = document.getElementById("mouse-cursor")
 const cursorParent = document.getElementById('mouse-cursor')
 const cursorChild = cursorParent.children[0]
 window.addEventListener('mousemove', mousemove)

@@ -94,7 +94,7 @@
                 <span>SPECTRUM.</span>
                 <span>by Lee, Dong-Hyeok</span>
             </div>
-            <div class="project" data-mouse="0">
+            <div class="project" data-mount="0">
                 <ul class="list">
                     <!-- project 01 -->
                     <li><a href="page/project_01.html">
@@ -143,8 +143,8 @@
     <!-- script - start -->
     <script src="js/common.js"></script>
     <script>
-        const cursor = document.getElementById("mouse-cursor")
 
+        // intro animation - start
         const intro = gsap.timeline();
         intro.from("#sidebar h1", { opacity: 0, duration: .8, delay: 0.25 })
         intro.from(".keyword .row li:nth-of-type(1)", { opacity: 0, duration: .2 })
@@ -174,12 +174,24 @@
         intro.from(".resume", {
             opacity: 1, duration: .15,
             onComplete: function () {
+
                 document.querySelector(".keyword").remove();
-                cursor.classList.add("mode_scroll")
-                cursor.children[0].setAttribute("data-name", "scroll")
-                letterSlice(resumeTextSlice, 0.5)
+
+                const resumeTextSliceTop = document.querySelectorAll(".resume .info [data-motion='text']")
+                const resumeTextSliceBottom = document.querySelectorAll(".resume h2 [data-motion='text']")
+                letterSlice(resumeTextSliceTop)
+
+                setTimeout(() => {
+                    letterSlice(resumeTextSliceBottom)
+                }, 500)
+
+                setTimeout(() => {
+                    cursor.classList.add("mode_scroll")
+                    cursor.children[0].setAttribute("data-name", "Scroll")
+                }, 1000)
             }
         })
+        // intro animation - end
 
 
         // resume text motion - start
@@ -224,6 +236,13 @@
 
                 setTimeout(() => {
                     document.getElementById("intro").remove()
+                    window.addEventListener('wheel', (e) => {
+                        if (e.deltaY) {
+                            scrollMount(e.deltaY)
+                        } else if (e.deltaX) {
+                            scrollMount(e.deltaX)
+                        }
+                    });
                 }, 500);
             }
         }
@@ -233,79 +252,72 @@
         // project - start
         const project = document.querySelector(".project")
         const projectList = document.querySelectorAll('.project .list>li');
+        const projectImg = document.querySelectorAll('.project img');
         const pageTotal = document.querySelector('.paging .total');
         const pageCurrent = document.querySelector('.paging .current');
         pageTotal.innerHTML = projectList.length;
         pageCurrent.innerHTML = '1';
 
-        function moveLeft() {
-            let move = gsap.timeline().to(project, {xPercent: "-=10", ease: "power3.easeOut", duration: 1})
-            // return move, console.log(count)
-        }
-        function moveRight() {
-            let move = gsap.timeline().to(project, {xPercent: "+=10", ease: "power3.easeOut", duration: 1})
-        }
+        function scrollMount(mount) {            
+            let mountData = Number(project.dataset.mount)
+            const max = (projectList.length * 332)
+            // max = Math.ceil(max / 100) * 100
+            mountData += mount
 
+            let pageNumber = Math.floor((mountData / max) * projectList.length) + 1
 
-        const projectX = project.getBoundingClientRect().x
+            let avg = (mountData / max) * 100
 
-        function scrollMount(mount){
-            let proX= project.getBoundingClientRect().x
-            let proW= project.getBoundingClientRect().width
-            let proMax = -(innerWidth / 2)
-            if(mount > 0 && proX > proMax){
-                moveLeft()
-                console.log(proX, proMax)
+            if(avg < 0){
+                avg = 0
             }
 
-            if(mount < 0 && proX < -166 ){
-                moveRight()
+            if(avg > 100){
+                avg = 100
             }
 
-            console.log(project.getBoundingClientRect())
+            for(let i of projectImg){
+                i.style.objectPosition = `${avg}% center`
+            }
 
+            if(pageNumber <= projectList.length && pageNumber != 0){
+                pageCurrent.innerHTML = pageNumber
+            }
+
+            if(mountData > 0){
+                project.dataset.mount = mountData
+            }else {
+                project.dataset.mount = 0
+            }
+
+            if(mountData > max) {
+                project.dataset.mount = max
+                mountData = max
+            }
+            
+            if(mount > 0){
+                let move = gsap.timeline().to(project, {x: `-${mountData}px`, ease: "power3.easeOut", duration: 1})
+            } else {
+                let move = gsap.timeline().to(project, {x: `-${mountData}px`, ease: "power3.easeOut", duration: 1})
+            }
+     
         }
 
-        window.addEventListener('wheel', (e) => {
-            if(e.deltaY){
-                scrollMount(e.deltaY)
-            }else if(e.detaX){
-                scrollMount(e.deltaX)
-            }
-        });
+        
 
+        const projectAnchor = document.querySelectorAll('.project a')
+        for(let i of projectAnchor){
+            i.addEventListener('mouseenter', (e) => {
+                cursor.classList.add("mode_open")
+                cursor.children[0].setAttribute("data-name", "Open")
+            })
 
-        // const projectLink = document.querySelectorAll('.project a')
-        // for(let i of projectLink){
-        //     i.addEventListener('click', function(e){
-        //         document.getElementById('sidebar').style.zIndex = 'unset'
-        //         e.preventDefault()
-        //         const thumb = i.querySelector('img')
-        //         // const thumbClone = thumb.cloneNode(true)
-        //         // console.log(thumb.getBoundingClientRect())
-
-        //         // thumbClone.style.position = 'fixed'
-        //         // thumbClone.style.top = thumb.getBoundingClientRect().y  + 'px'
-        //         // thumbClone.style.left = thumb.getBoundingClientRect().x + 'px'
-        //         // thumbClone.style.transform = 'translate(50%, -60%)'
-
-                
-        //         // project.append(thumbClone)
-
-        //         // if(!thumb.nextElementSibling.classList.contains('clone')){
-        //         //     const thumbClone = thumb.cloneNode(true)
-        //         //     thumbClone.classList.add('clone')
-        //         //     thumb.after(thumbClone)
-                 
-                    
-        //         //     thumbClone.style.width = innerWidth + 'px'
-        //         //     thumbClone.style.height = innerHeight + 'px'
-        //         //     let ss = gsap.timeline()
-        //         //     .to('.clone', {width: `${innerWidth}px`})
-        //         // }
-        //     })
-        // }
-        // project - end
+            i.addEventListener('mouseleave', (e) => {
+                cursor.classList.remove("mode_open")
+                cursor.children[0].removeAttribute("data-name")
+            })
+        }
+        //project - end
     </script>
 </body>
 </html>
